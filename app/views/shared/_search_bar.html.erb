@@ -1,0 +1,32 @@
+ <h1>Pages#home</h1>
+<p>Find me in app/views/pages/home.html.erb</p>
+
+
+<%= form_with(url: search_path, method: "get", local: false, class: "search-form") do %>
+  <div class="search-field">
+    <%= label_tag :destination do %>
+      <i class="fas fa-search"></i>
+      Where are you going?
+    <% end %>
+    <%= text_field_tag :destination, params[:destination], placeholder: "Where are you going?" %>
+  </div>
+
+  <div class="search-field">
+    <%= label_tag :dates do %>
+      <i class="fas fa-calendar-alt"></i>
+      Check in - Check out
+    <% end %>
+    <%= text_field_tag :dates, params[:dates], placeholder: "Check in " %>
+    <%= text_field_tag :dates, params[:dates], placeholder: " Check out" %>
+  </div>
+
+  <div class="search-field">
+    <%= label_tag :guests do %>
+      <i class="fas fa-user-friends"></i>
+      Guests
+    <% end %>
+    <%= text_field_tag :guests, params[:guests], placeholder: "Guests" %>
+  </div>
+
+  <%= submit_tag "Search", class: "search-button" %>
+<% end %>
