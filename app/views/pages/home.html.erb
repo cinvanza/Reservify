@@ -7,6 +7,13 @@
       <% @flats.each do |flat| %>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
+            <% if flat.image_url.present? %>
+              <!-- Agregar la imagen desde la URL almacenada en la base de datos -->
+              <img src="<%= flat.image_url %>" class="card-img-top" alt="Flat Image">
+            <% else %>
+              <!-- Si no hay una imagen disponible, puedes mostrar una imagen de marcador de posición -->
+              <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Placeholder Image">
+            <% end %>
             <div class="card-body">
               <h5 class="card-title"><%= flat.title %></h5>
               <p class="card-text"><%= flat.description %></p>
