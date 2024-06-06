@@ -30,13 +30,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_06_173235) do
     t.string "address"
     t.integer "price"
     t.integer "capacity"
-    t.integer "reserved"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
     t.text "description"
     t.string "image_url"
+    t.boolean "reserved", default: false, null: false
     t.index ["user_id"], name: "index_flats_on_user_id"
   end
 

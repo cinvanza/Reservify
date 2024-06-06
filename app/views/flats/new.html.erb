@@ -1,10 +1,9 @@
-<div class="container">
-<h1>Add a new flat</h1>
+<div class="container px-5">
+<h1 class="my-5" style="font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;">Start adding your space</h1>
 <%= simple_form_for [@flat] do |f| %>
   <%= f.input :address, label: 'Address:' %>
   <%= f.input :price, label: 'Price' %>
   <%= f.input :capacity, label: 'Capacity' %>
-  <%= f.input :reserved, label: 'Reserved' %>
-  <%= f.button :submit, "Save Flat" %>
+  <%= f.button :submit, "Save Flat", class: 'btn btn-primary'%>
 <% end %>
 </div>
