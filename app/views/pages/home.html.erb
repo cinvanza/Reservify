@@ -20,3 +20,32 @@
       <i class="fas fa-search"></i>
     </button>
   </div>
+<!-- app/views/pages/home.html.erb -->
+<div class="container">
+  <h1 class="my-4">Welcome to Reservify</h1>
+  <p>Explore our featured flats below:</p>
+  <div class="row">
+    <% if @flats.any? %>
+      <% @flats.each do |flat| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <% if flat.image_url.present? %>
+              <!-- Agregar la imagen desde la URL almacenada en la base de datos -->
+              <img src="<%= flat.image_url %>" class="card-img-top" alt="Flat Image">
+            <% else %>
+              <!-- Si no hay una imagen disponible, puedes mostrar una imagen de marcador de posición -->
+              <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Placeholder Image">
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= flat.title %></h5>
+              <p class="card-text"><%= flat.description %></p>
+              <p class="card-text text-muted">Price: <%= number_to_currency(flat.price) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No flats available at the moment.</p>
+    <% end %>
+  </div>
+</div>
