@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- app/views/pages/home.html.erb -->
+<div class="container">
+  <h1 class="my-4">Welcome to Reservify</h1>
+  <p>Explore our featured flats below:</p>
+  <div class="row">
+    <% if @flats.any? %>
+      <% @flats.each do |flat| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title"><%= flat.title %></h5>
+              <p class="card-text"><%= flat.description %></p>
+              <p class="card-text text-muted">Price: <%= number_to_currency(flat.price) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No flats available at the moment.</p>
+    <% end %>
+  </div>
+</div>
