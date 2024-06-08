@@ -1,10 +1,10 @@
 <div class="container px-5">
-<h1 class="my-5" style="font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;">Edit your space</h1>
-<%= simple_form_for [@flat] do |f| %>
-  <%= f.input :address, label: 'Address:' %>
-  <%= f.input :price, label: 'Price' %>
-  <%= f.input :capacity, label: 'Capacity' %>
-  <%= f.input :reserved, label: 'Reserved?' %>
-  <%= f.button :submit, "Save Flat", class: 'btn btn-primary'%>
-<% end %>
+<h1 class="my-5" style="font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;"><%= @flat.address %></h1>
+  <% @flat.photos.each do |photo| %>
+    <%= cl_image_tag(photo.key, height: 400, width: 400, crop: :fill) %>
+  <% end %>
+  <p><%= @flat.title %></p>
+  <p><%= @flat.description %></p>
+  <p><%= @flat.available_start %> - <%= @flat.available_end %></p>
+  <p><strong><%= @flat.price %></strong></p>
 </div>
