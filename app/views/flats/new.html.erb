@@ -8,7 +8,7 @@
   <%= f.input :description, label: 'Description' %>
   <%= f.input :available_start, label: 'Initial date the flat will be available for reservation' %>
   <%= f.input :available_end, label: 'Final date the flat will be available for reservation' %>
-  <%= f.input :photo %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit, "Save Flat", class: 'btn btn-primary'%>
 <% end %>
 </div>
