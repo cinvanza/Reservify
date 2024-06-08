@@ -31,8 +31,8 @@
 }
 
 /* Responsive Design */
-@media (max-width: 600px) {
-  .nav-text-bottom {
+@media (min-width: 600px) {
+  .navbar-bottom {
     display: none;
   }
 }
