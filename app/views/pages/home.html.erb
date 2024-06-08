@@ -2,52 +2,34 @@
 
 <%= render 'shared/search_bar' %>
 
-<%# <div class="search-bar">
-    <div class="search-field">
-      <i class="fas fa-search"></i>
-      <input type="text" placeholder="Where are you going?" />
-    </div>
-    <div class="search-field">
-      <i class="fas fa-calendar-alt"></i>
-      <input type="text" placeholder="Check in" class='datepicker'/>
-      <input type="text" placeholder="Check out" />
-    </div>
-    <div class="search-field">
-      <i class="fas fa-user-friends"></i>
-      <input type="text" placeholder="Guests" />
-    </div>
-    <button class="search-button">
-      <i class="fas fa-search"></i>
-    </button>
-  </div>
-<!-- app/views/pages/home.html.erb -->
-<div class="container"> %>
+<div class="container-flex">
+    <%= link_to 'Add Flat', new_flat_path, class: 'btn btn-primary' %>
+</div>
 
-  <p>Explore our featured flats below:</p>
-  <%= link_to 'Add Flat', new_flat_path, class: 'btn btn-primary' %>
-  <div class="row">
-    <% if @flats.any? %>
-      <% @flats.each do |flat| %>
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <% if flat.image_url.present? %>
-              <!-- Agregar la imagen desde la URL almacenada en la base de datos -->
-              <img src="<%= flat.image_url %>" class="card-img-top" alt="Flat Image">
-            <% else %>
-              <!-- Si no hay una imagen disponible, puedes mostrar una imagen de marcador de posición -->
-              <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Placeholder Image">
-            <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><%= flat.title %></h5>
-              <p class="card-text"><%= flat.description %></p>
-              <p class="card-text text-muted">Price: <%= number_to_currency(flat.price) %></p>
-              <%= link_to 'View Flat', flat_path(flat), class: 'btn btn-secondary' %>
+<div class="container-flex">
+    <div class="row">
+      <% if @flats.any? %>
+        <% @flats.each do |flat| %>
+          <div class="col-md-4 flex-cards">
+            <div class="card mb-4 shadow-sm">
+              <% if flat.image_url.present? %>
+                <!-- Agregar la imagen desde la URL almacenada en la base de datos -->
+                <img src="<%= flat.image_url %>" class="card-img-top" alt="Flat Image">
+              <% else %>
+                <!-- Si no hay una imagen disponible, puedes mostrar una imagen de marcador de posición -->
+                <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Placeholder Image">
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title"><%= flat.title %></h5>
+                <p class="card-text"><%= flat.description %></p>
+                <p class="card-text text-muted">Price: <%= number_to_currency(flat.price) %></p>
+                <%= link_to 'View Flat', flat_path(flat), class: 'btn btn-secondary' %>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
+      <% else %>
+        <p>No flats available at the moment.</p>
       <% end %>
-    <% else %>
-      <p>No flats available at the moment.</p>
-    <% end %>
-  </div>
+    </div>
 </div>
