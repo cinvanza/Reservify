@@ -33,6 +33,7 @@ class FlatsController < ApplicationController
 
   def destroy
     @flat = Flat.find(params[:id])
+    @flat.bookings.destroy_all
     @flat.destroy
     redirect_to flats_path, status: :see_other
   end
