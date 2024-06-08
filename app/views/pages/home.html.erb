@@ -24,6 +24,7 @@
 <div class="container"> %>
 
   <p>Explore our featured flats below:</p>
+  <%= link_to 'Add Flat', new_flat_path, class: 'btn btn-primary' %>
   <div class="row">
     <% if @flats.any? %>
       <% @flats.each do |flat| %>
@@ -40,6 +41,7 @@
               <h5 class="card-title"><%= flat.title %></h5>
               <p class="card-text"><%= flat.description %></p>
               <p class="card-text text-muted">Price: <%= number_to_currency(flat.price) %></p>
+              <%= link_to 'View Flat', flat_path(flat), class: 'btn btn-secondary' %>
             </div>
           </div>
         </div>

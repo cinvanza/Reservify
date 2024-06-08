@@ -1,0 +1,7 @@
+<h1>New Booking</h1>
+
+<%= simple_form_for [@flat, @booking] do |f| %>
+  <%= f.input :check_in, label: 'Choose an initial date for reservation:'%>
+  <%= f.input :check_out, label: 'Choose an ending date for reservation:'%>
+  <%= f.button :submit, "Create Booking" %>
+<% end %>

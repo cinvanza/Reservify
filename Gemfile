@@ -78,3 +78,4 @@ end
 gem "devise", "~> 4.9"
 gem "dotenv-rails"
 gem "cloudinary"
+gem "faker"

@@ -34,6 +34,7 @@ class FlatsController < ApplicationController
 
   def destroy
     @flat = Flat.find(params[:id])
+    @flat.bookings.destroy_all
     @flat.destroy
     redirect_to flats_path, status: :see_other
   end
@@ -41,6 +42,6 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:address, :price, :capacity, :reserved, :user_id)
+    params.require(:flat).permit(:address, :price, :capacity, :user_id, :reserved, :title, :description, :image_url, :available_start, :available_end, photos: [])
   end
 end
