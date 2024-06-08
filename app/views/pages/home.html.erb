@@ -2,6 +2,7 @@
 <div class="container">
   <h1 class="my-4">Welcome to Reservify</h1>
   <p>Explore our featured flats below:</p>
+  <%= link_to 'Add Flat', new_flat_path, class: 'btn btn-primary' %>
   <div class="row">
     <% if @flats.any? %>
       <% @flats.each do |flat| %>
