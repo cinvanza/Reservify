@@ -1,6 +1,28 @@
+<h1 class="my-4">Welcome to Reservify</h1>
+
+<%= render 'shared/search_bar' %>
+
+<%# <div class="search-bar">
+    <div class="search-field">
+      <i class="fas fa-search"></i>
+      <input type="text" placeholder="Where are you going?" />
+    </div>
+    <div class="search-field">
+      <i class="fas fa-calendar-alt"></i>
+      <input type="text" placeholder="Check in" class='datepicker'/>
+      <input type="text" placeholder="Check out" />
+    </div>
+    <div class="search-field">
+      <i class="fas fa-user-friends"></i>
+      <input type="text" placeholder="Guests" />
+    </div>
+    <button class="search-button">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
 <!-- app/views/pages/home.html.erb -->
-<div class="container">
-  <h1 class="my-4">Welcome to Reservify</h1>
+<div class="container"> %>
+
   <p>Explore our featured flats below:</p>
   <%= link_to 'Add Flat', new_flat_path, class: 'btn btn-primary' %>
   <div class="row">

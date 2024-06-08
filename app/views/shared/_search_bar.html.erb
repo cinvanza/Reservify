@@ -1,0 +1,31 @@
+
+
+
+<%= form_with(url: flats_path, method: "get", local: false, class: "search-bar") do |f| %>
+  <div class="search-field">
+    <%= label_tag :destination do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+    <%= text_field_tag :destination, params[:destination], placeholder: "Where are you going?" %>
+  </div>
+
+  <div class="search-field">
+    <%= label_tag :dates do %>
+      <i class="fas fa-calendar-alt"></i>
+
+    <% end %>
+     <%= text_field_tag :date_in, params[:dates], placeholder: "Check out ",  data: {controller: 'datepicker'} %>
+     <%= text_field_tag :date_out, params[:dates], placeholder: "Check in ",  data: {controller: 'datepicker'} %>
+
+  </div>
+
+  <div class="search-field">
+    <%= label_tag :guests do %>
+      <i class="fas fa-user-friends"></i>
+      Guests
+    <% end %>
+    <%= text_field_tag :guests, params[:guests], placeholder: "Guests" %>
+  </div>
+
+  <%= submit_tag "Search", class: "search-button" %>
+<% end %>
