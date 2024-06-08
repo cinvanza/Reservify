@@ -1,6 +1,6 @@
 <div class="container px-5">
 <h1 class="my-5" style="font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;">Start adding your space</h1>
-<%= simple_form_for [@flat] do |f| %>
+<%= simple_form_for @flat do |f| %>
   <%= f.input :address, label: 'Address:' %>
   <%= f.input :price, label: 'Price' %>
   <%= f.input :capacity, label: 'Capacity' %>
