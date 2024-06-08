@@ -1,15 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1 class="my-4">Welcome to Reservify</h1>
 
+<%= render 'shared/search_bar' %>
 
-<div class="search-bar">
+<%# <div class="search-bar">
     <div class="search-field">
       <i class="fas fa-search"></i>
       <input type="text" placeholder="Where are you going?" />
     </div>
     <div class="search-field">
       <i class="fas fa-calendar-alt"></i>
-      <input type="text" placeholder="Check in" />
+      <input type="text" placeholder="Check in" class='datepicker'/>
       <input type="text" placeholder="Check out" />
     </div>
     <div class="search-field">
@@ -21,8 +21,8 @@
     </button>
   </div>
 <!-- app/views/pages/home.html.erb -->
-<div class="container">
-  <h1 class="my-4">Welcome to Reservify</h1>
+<div class="container"> %>
+
   <p>Explore our featured flats below:</p>
   <div class="row">
     <% if @flats.any? %>

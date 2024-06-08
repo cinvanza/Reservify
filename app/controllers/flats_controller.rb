@@ -1,5 +1,6 @@
 class FlatsController < ApplicationController
   def index
+    raise
     @flats = Flat.all
   end
 

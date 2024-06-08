@@ -1,24 +1,21 @@
- <nav class="navbar-bottom">
+<nav class="navbar-bottom">
+  <%= link_tof flats_path, class: 'nav-link-bottom' do %>
+    <i class="fas fa-home"></i>
+    <span class="nav-text-bottom">Home</span>
+  <% end %>
 
-    <a href="#" class="nav-link-bottom">
-      <i class="fas fa-home"></i>
-      <span class="nav-text-bottom">Home</span>
-       </a>
+  <a href="#" class="nav-link-bottom">
+    <i class="fas fa-search"></i>
+    <span class="nav-text-bottom">Search</span>
+  </a>
 
+  <%= link_to new_flat_path, class: 'nav-link-bottom' do %>
+    <i class="fa-solid fa-plus"></i>
+    <span class="nav-text-bottom">Add</span>
+  <% end %>
 
-
-    <a href="#" class="nav-link-bottom">
-      <i class="fas fa-search"></i>
-      <span class="nav-text-bottom">Search</span>
-    </a>
-
-    <a href="#" class="nav-link-bottom">
-      <i class="fa-solid fa-plus"></i>
-      <span class="nav-text-bottom">Add</span>
-    </a>
-
-    <a href="#" class="nav-link-bottom">
-      <i class="fas fa-user"></i>
-      <span class="nav-text-bottom">Profile</span>
-    </a>
-  </nav>
+  <%= link_to edit_user_registration_path, class: 'nav-link-bottom' do %>
+    <i class="fas fa-user"></i>
+    <span class="nav-text-bottom">Profile</span>
+  <% end %>
+</nav>
