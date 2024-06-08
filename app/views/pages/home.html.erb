@@ -19,6 +19,7 @@
               <h5 class="card-title"><%= flat.title %></h5>
               <p class="card-text"><%= flat.description %></p>
               <p class="card-text text-muted">Price: <%= number_to_currency(flat.price) %></p>
+              <%= link_to 'View Flat', flat_path(flat), class: 'btn btn-secondary' %>
             </div>
           </div>
         </div>
