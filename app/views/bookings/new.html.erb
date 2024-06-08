@@ -1,45 +1,7 @@
 <h1>New Booking</h1>
 
-<%= form_with(model: @booking, local: true) do |form| %>
-  <% if @booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
-      <ul>
-        <% @booking.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :check_in %>
-    <%= form.datetime_select :check_in %>
-  </div>
-
-  <div class="field">
-    <%= form.label :check_out %>
-    <%= form.datetime_select :check_out %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.collection_select :user_id, User.all, :id, :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :flat_id %>
-    <%= form.collection_select :flat_id, Flat.all, :id, :address %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Create Booking" %>
-  </div>
+<%= simple_form_for [@flat, @booking] do |f| %>
+  <%= f.input :check_in, label: 'Choose an initial date for reservation:'%>
+  <%= f.input :check_out, label: 'Choose an ending date for reservation:'%>
+  <%= f.button :submit, "Create Booking" %>
 <% end %>
-
-<%= link_to 'Back', bookings_path %>
