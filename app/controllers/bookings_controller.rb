@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  before_action :set_flat, only: %i[new create update]
+
   def index
     @bookings = Booking.all
   end
@@ -13,10 +15,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.flat = @flat
+    @booking.user = current_user
     if @booking.save
-      redirect_to @booking, notice: 'Booking was successfully created.'
+      redirect_to bookings_path, notice: 'Booking was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -43,5 +47,9 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:check_in, :check_out, :status, :user_id, :flat_id)
+  end
+
+  def set_flat
+    @flat = Flat.find(params[:flat_id])
   end
 end
