@@ -22,7 +22,28 @@ users = []
 5.times do
   users << User.create!(
     email: Faker::Internet.email,
-    encrypted_password: Devise::Encryptor.digest(User, 'password'), # Devise password encryption
+    password: 'password', # Devise se encargará de encriptar esta contraseña
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    country: Faker::Address.country
+  )
+end
+
+require 'faker'
+
+# Limpiar la base de datos
+ActiveStorage::Attachment.destroy_all
+ActiveStorage::Blob.destroy_all
+Booking.destroy_all
+Flat.destroy_all
+User.destroy_all
+
+# Crear usuarios
+users = []
+5.times do
+  users << User.create!(
+    email: Faker::Internet.email,
+    password: 'password', # Devise se encargará de encriptar esta contraseña
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     country: Faker::Address.country
