@@ -1,82 +1,78 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-
-require 'faker'
-
-# Limpiar la base de datos
-ActiveStorage::Attachment.destroy_all
-ActiveStorage::Blob.destroy_all
+# Eliminar todos los datos anteriores
 Booking.destroy_all
 Flat.destroy_all
 User.destroy_all
 
-# Crear usuarios
-users = []
-5.times do
-  users << User.create!(
-    email: Faker::Internet.email,
-    password: 'password', # Devise se encargará de encriptar esta contraseña
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    country: Faker::Address.country
-  )
-end
+# Restablecer los ID de las tablas (opcional)
+ActiveRecord::Base.connection.reset_pk_sequence!('bookings')
+ActiveRecord::Base.connection.reset_pk_sequence!('flats')
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
 
-require 'faker'
+# Crear nuevos usuarios
+user1 = User.create!(
+  email: "unique_user1@example.com",
+  password: "password123",
+  last_name: "Doe",
+  first_name: "John",
+  country: "USA"
+)
 
-# Limpiar la base de datos
-ActiveStorage::Attachment.destroy_all
-ActiveStorage::Blob.destroy_all
-Booking.destroy_all
-Flat.destroy_all
-User.destroy_all
+user2 = User.create!(
+  email: "unique_user2@example.com",
+  password: "password123",
+  last_name: "Smith",
+  first_name: "Jane",
+  country: "Canada"
+)
 
-# Crear usuarios
-users = []
-5.times do
-  users << User.create!(
-    email: Faker::Internet.email,
-    password: 'password', # Devise se encargará de encriptar esta contraseña
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    country: Faker::Address.country
-  )
-end
+user3 = User.create!(
+  email: "unique_user3@example.com",
+  password: "password123",
+  last_name: "Paul",
+  first_name: "Jane",
+  country: "USA"
+)
 
-# Crear flats
-flats = []
-10.times do
-  flats << Flat.create!(
-    title: Faker::Lorem.sentence(word_count: 3),
-    address: Faker::Address.full_address,
-    price: Faker::Number.between(from: 50, to: 500),
-    capacity: Faker::Number.between(from: 1, to: 10),
-    user: users.sample,
-    description: Faker::Lorem.paragraph(sentence_count: 5),
-    image_url: Faker::LoremFlickr.image(size: "300x300", search_terms: ['house']),
-    reserved: [true, false].sample,
-    available_start: Faker::Date.forward(days: 23),
-    available_end: Faker::Date.forward(days: 60),
-    available_days: (1..30).to_a.sample(15).map(&:to_s).join(', ') # Assuming available_days is a comma-separated string
-  )
-end
+# Crear nuevos flats
+flat1 = Flat.create!(
+  address: "123 Main St, Anytown, USA",
+  price: 100,
+  capacity: 4,
+  user: user1,
+  title: "Cozy Apartment",
+  description: "A nice and cozy apartment in the city center.",
+  image_url: "http://example.com/image1.jpg",
+  available_start: "2024-07-01",
+  available_end: "2024-07-31",
+  available_days: "Monday, Wednesday, Friday"
+)
 
-# Crear bookings
-20.times do
-  Booking.create!(
-    check_in: Faker::Date.forward(days: 10),
-    check_out: Faker::Date.forward(days: 20),
-    status: [0, 1, 2].sample, # Assuming you have enum status in Booking model
-    user: users.sample,
-    flat: flats.sample
-  )
-end
+flat2 = Flat.create!(
+  address: "456 Elm St, Othertown, Canada",
+  price: 150,
+  capacity: 6,
+  user: user2,
+  title: "Spacious House",
+  description: "A spacious house with a beautiful garden.",
+  image_url: "http://example.com/image2.jpg",
+  available_start: "2024-08-01",
+  available_end: "2024-08-31",
+  available_days: "Tuesday, Thursday, Saturday"
+)
 
-puts "Seed completed!"
+# Crear nuevas reservas
+Booking.create!(
+  check_in: "2024-07-10",
+  check_out: "2024-07-15",
+  status: 1,
+  user: user1,
+  flat: flat1
+)
+
+Booking.create!(
+  check_in: "2024-08-05",
+  check_out: "2024-08-12",
+  status: 1,
+  user: user2,
+  flat: flat2
+)
