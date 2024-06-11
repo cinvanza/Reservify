@@ -82,3 +82,16 @@ body {
   font-weight: bold;
   color: #27ae60;
 }
+
+.container-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+#text-container {
+  display: flex;
+  align-items: start;
+}
