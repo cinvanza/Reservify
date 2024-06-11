@@ -4,12 +4,12 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Title</th>
-        <th scope="col">Address</th>
-        <th scope="col">Price</th>
-        <th scope="col">Capacity</th>
-        <th scope="col">Available from</th>
-        <th scope="col">Available until</th>
+        <th scope="col"><i class="fa-solid fa-house"></i> Title</th>
+        <th scope="col"><i class="fa-solid fa-location-dot"></i> Address</th>
+        <th scope="col"><i class="fa-solid fa-money-bill"></i> Price</th>
+        <th scope="col"><i class="fa-solid fa-users"></i> Capacity</th>
+        <th scope="col"><i class="fa-solid fa-hourglass-start"></i> Available from</th>
+        <th scope="col"><i class="fa-solid fa-hourglass-end"></i> Available until</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -24,7 +24,7 @@
           <td><%= flat.capacity %></td>
           <td><%= flat.available_start %></td>
           <td><%= flat.available_end %></td>
-          <td><%= link_to edit_flat_path(flat) do %><i class="fa-solid fa-pen-to-square" style="margin: 5px"></i><% end %><%= link_to flats_path(flat), method: :delete, data: { confirm: 'Are you sure?' } do %><i class="fa-solid fa-trash" style="margin: 5px"></i><% end %></td>
+          <td><%= link_to edit_flat_path(flat) do %><i class="fa-solid fa-pen-to-square" style="margin: 5px"></i><% end %><%= link_to flat_path(flat), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %><i class="fa-solid fa-trash" style="margin: 5px"></i><% end %></td>
           <% cont += 1 %>
         </tr>
       <% end %>
