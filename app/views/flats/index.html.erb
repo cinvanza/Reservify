@@ -1,14 +1,33 @@
 <div class="container">
   <h1>Flats</h1>
-  <% @flats.each do |flat| %>
-  <ul>
-    <li><strong><%= flat.address %></strong></li>
-    <li><%= flat.price %></li>
-    <li><%= flat.reserved %></li>
-    <li>
-    <%= link_to 'Edit Flat', edit_flat_path(flat), class: 'btn btn-secondary btn-sm' %>
-    <%= button_to 'Delete Flat', flat, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
-    </li>
-  </ul>
-<% end %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><i class="fa-solid fa-house"></i> Title</th>
+        <th scope="col"><i class="fa-solid fa-location-dot"></i> Address</th>
+        <th scope="col"><i class="fa-solid fa-money-bill"></i> Price</th>
+        <th scope="col"><i class="fa-solid fa-users"></i> Capacity</th>
+        <th scope="col"><i class="fa-solid fa-hourglass-start"></i> Available from</th>
+        <th scope="col"><i class="fa-solid fa-hourglass-end"></i> Available until</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cont = 1  %>
+      <% @flats.each do |flat| %>
+        <tr>
+          <th scope="row"> <%= cont %></th>
+          <td><%= flat.title %></td>
+          <td><%= flat.address %></td>
+          <td>$ <%= flat.price %></td>
+          <td><%= flat.capacity %></td>
+          <td><%= flat.available_start %></td>
+          <td><%= flat.available_end %></td>
+          <td><%= link_to edit_flat_path(flat) do %><i class="fa-solid fa-pen-to-square" style="margin: 5px"></i><% end %><%= link_to flat_path(flat), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %><i class="fa-solid fa-trash" style="margin: 5px"></i><% end %></td>
+          <% cont += 1 %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
