@@ -1,19 +1,6 @@
 class FlatsController < ApplicationController
   def index
-    @flats = Flat.all
-    if params[:destination].present?
-      @flats = @flats.where(address: params[:destination])
-    end
-    @check_in = @flats.where(available_start: params[:date_in])
-    @check_out = @flats.where(available_end: params[:date_out])
-
-    if @flats.where(available_start: params[:date_in]).present? &&
-       @flats.where(available_end: params[:date_out]).present?
-      @available = available_days(@flats.where(available_start: params[:date_in]), @flats.where(available_end: params[:date_out]))
-    else
-      @available = []
-      flash[:alert] = "Please enter both check-in and check-out dates."
-    end
+   @flats = Flat.all
   end
 
   def show
@@ -51,6 +38,23 @@ class FlatsController < ApplicationController
     redirect_to flats_path, status: :see_other
   end
 
+  def search
+    @flats = Flat.all
+    if params[:destination].present?
+      @flats = @flats.where(address: params[:destination])
+    end
+    @check_in = @flats.where(available_start: params[:date_in])
+    @check_out = @flats.where(available_end: params[:date_out])
+
+    if @flats.where(available_start: params[:date_in]).present? &&
+       @flats.where(available_end: params[:date_out]).present?
+      @available = available_days(@flats.where(available_start: params[:date_in]), @flats.where(available_end: params[:date_out]))
+    else
+      @available = []
+      flash[:alert] = "Please enter both check-in and check-out dates."
+    end
+
+  end
   private
 
   def flat_params
