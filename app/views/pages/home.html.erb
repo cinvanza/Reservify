@@ -1,4 +1,4 @@
-<h1 class="my-4">Welcome to Reservify</h1>
+<h1 class="my-4">Welcome to <span class="title">Reservify</span></h1>
 <div class="container w75">
   <%= render 'shared/search_bar' %>
 </div>
@@ -10,8 +10,8 @@
     <div class="row">
       <% if @flats.any? %>
         <% @flats.each do |flat| %>
-          <div class="col-md-4">
-            <div class="card mb-4 shadow-sm">
+          <div class="col-12 col-sm-6 col-md-4 mb-4">
+            <div class="card mb-4 shadow-sm h-100">
               <% if flat.photos.present? %>
                 <%= image_tag flat.photos.first, class: "card-img-top" %>
               <% else %>
