@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :flats, dependent: :destroy
   validates :email, uniqueness: true
+  has_one_attached :photo
 end
