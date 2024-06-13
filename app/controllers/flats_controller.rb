@@ -39,22 +39,39 @@ class FlatsController < ApplicationController
   end
 
   def search
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
     @flats = Flat.all
     if params[:destination].present?
       @flats = @flats.where(address: params[:destination])
     end
+<<<<<<< HEAD
     @check_in = @flats.where(available_start: params[:date_in])
     @check_out = @flats.where(available_end: params[:date_out])
 
     if @flats.where(available_start: params[:date_in]).present? &&
        @flats.where(available_end: params[:date_out]).present?
       @available = available_days(@flats.where(available_start: params[:date_in]), @flats.where(available_end: params[:date_out]))
+=======
+    @check_in = params[:available_start]
+    @check_out = params[:available_end]
+
+    if @check_in.present? && @check_out.present?
+      @available = available_dates(@check_in, @check_out)
+>>>>>>> master
     else
       @available = []
       flash[:alert] = "Please enter both check-in and check-out dates."
     end
+<<<<<<< HEAD
 
   end
+=======
+  end
+
+>>>>>>> master
   private
 
   def flat_params
@@ -66,9 +83,15 @@ def available_dates(check_in, check_out)
   check_in_date = Date.parse(check_in)
   check_out_date = Date.parse(check_out)
 
+<<<<<<< HEAD
   @flat = Flat.where("check_in < ? AND check_out > ?", check_out_date, check_in_date)
 
   if @flat.exists?
+=======
+  flats = Flat.where("check_in < ? AND check_out > ?", check_out_date, check_in_date)
+
+  if flats.exists?
+>>>>>>> master
     return []
   else
     return [check_in_date, check_out_date]
