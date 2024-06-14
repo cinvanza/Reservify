@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Photos</title>
-  <%= stylesheet_link_tag '/app/assets/stylesheets/components/_photos.scss', media: 'all' %>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-  <div class="container">
 
+<div class="container w-80 shadow border p-4 mt-2">
       <div class="container"> <!--CONTENEDOR DE LAS FOTOGRAFIAS-->
-        <h1 class="my-3" style="font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;"><%= @flat.title %></h1>
+        <h1 class="my-3" style="font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;"><i class="fa-solid fa-house" style="color: rgb(243, 35, 156)"></i> <%= @flat.title %></h1>
           <div class="row d-flex justify-content-center">
             <% @flat.photos.first %>
-                <div class="col-6">
+                <div class="col-8">
                   <div>
                     <%= cl_image_tag @flat.photos.first.key, class:"img-fluid" %>
                   </div>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                   <div class="col-6 mb-2">
                       <%= cl_image_tag @flat.photos.second.key, class:"img-fluid", size:"250x250" %>
                   </div>
@@ -32,25 +24,31 @@
           <h3><strong>Flat in <%= @flat.address %></strong></h3>
           <h4>About this place</h4>
           <p><%= @flat.description %></p>
-          <p><%= @flat.available_start %> - <%= @flat.available_end %></p>
-          <p><strong><%= @flat.price %></strong></p>
+          <hr>
+          <p class="mb-1"><strong>Stay with </strong></p>
+          <p><%= @flat.user %></p>
+            <%= link_to "Book Now", new_flat_booking_path(@flat), class:'btn btn-primary btn-lg mt-4'%>
+            <%= link_to 'Back', flats_path, class:'btn btn-outline-primary btn-lg mt-4'%>
         </div>
-        <div class="col shadow border rounded-3">
-          <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
-            <div class="col p-3">
-              <h4>$ <%= @flat.price %></h4>
-            </div>
-          </div>
-          <div class="d-grid gap-2">
-            <%= link_to "Book Now", new_flat_booking_path(@flat), class:'btn btn-success m-3'%>
-          </div>
+        <div class="col ms-3">
+        <h4>$ <%= @flat.price %></h4>
+              <table class="table table-bordered rounded">
+              <tbody>
+                <colgroup>
+                  <col span="1" style="width: 50%">
+                  <col span="1" style="width: 50%">
+                </colgroup>
+                <tr>
+                  <th scope="col" style="color: #FF0000">CHECK-IN</th>
+                  <th scope="col" style="color: #FF0000">CHECK-OUT</th>
+                </tr>
+                <tr>
+                  <td style="color: #818589"><%= @flat.available_start %></td>
+                  <td style="color: #818589"><%= @flat.available_end %></td>
+              </tbody>
+            </table>
+            <th scope="col"><i class="fa-solid fa-users"></i><strong> CAPACITY:</strong> <%= @flat.capacity %></th>
         </div>
       </div>
-
-      <%= link_to 'Back', flats_path, class:'btn btn-outline-primary m-3'%>
+      </div>
 </div>
-
-
-
-</body>
-</html>
