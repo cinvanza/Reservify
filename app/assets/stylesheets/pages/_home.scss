@@ -102,3 +102,35 @@ body {
   color: #eb209d;
   margin-bottom: 60px;
 }
+
+.banner-container {
+  background-color: #f8f9fa;
+  padding: 20px 0;
+}
+
+.banner-text {
+  text-align: center;
+  color: #343a40;
+}
+
+h1.title {
+  color: #ff6f61;
+}
+
+.container.w75 {
+  max-width: 75%;
+}
+
+.card-title {
+  font-size: 1.25rem;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
