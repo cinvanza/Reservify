@@ -11,7 +11,6 @@
         <th scope="col"><i class="fa-solid fa-location-dot"></i> Check-In</th>
         <th scope="col"><i class="fa-solid fa-location-dot"></i>Check-Out</th>
         <th scope="col"><i class="fa-solid fa-address-book"></i> Flat Address</th>
-        <th scope="col"><i class="fa-solid fa-wand-magic-sparkles"></i> Flat Status</th>
         <th scope="col">Actions</th>
       </tr>
     </thead>
@@ -26,7 +25,6 @@
             <td style="color: #818589"><%= booking.check_in %></td>
             <td style="color: #818589">$ <%= booking.check_out %></td>
             <td style="color: #818589"><%= booking.flat.address %></td>
-            <td style="color: #818589"><%= booking.status %></td>
             <td><%= link_to booking_path(booking) do %><i class="fa-solid fa-eye" style="margin: 5px"></i><% end %><%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %><i class="fa-solid fa-trash" style="margin: 5px"></i><% end %></td>
             <% cont += 1 %>
           </tr>
