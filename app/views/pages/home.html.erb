@@ -1,9 +1,14 @@
 <div class="banner-container">
-  <img src="https://images.pexels.com/photos/1002175/pexels-photo-1002175.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Banner Image" class="img-fluid">
-  <div class="banner-text">
-    <h1 class="my-4">Welcome to <span class="title">Reservify</span></h1>
-    <h2>Discover Your Next Stay</h2>
-    <p>Find the best flats for your next trip.</p>
+  <div class="banner-image" style="background-image: url('https://images.pexels.com/photos/1002175/pexels-photo-1002175.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+    <div class="banner-text">
+      <div class="banner-top-left">
+        <h1 class="my-4">Welcome to <span class="title">Reservify</span></h1>
+      </div>
+      <div class="banner-center">
+        <h2>Discover Your Next Stay</h2>
+        <p>Find the best flats for your next trip.</p>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -16,9 +21,9 @@
     <% if @flats.any? %>
       <% @flats.each do |flat| %>
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-          <div class="card mb-4 shadow-sm h-100" style="min-height: 400px;">
+          <div class="card mb-4 shadow-sm h-100 rounded" style="min-height: 400px;">
             <% if flat.photos.present? %>
-              <%= image_tag flat.photos.first, class: "card-img-top img-fluid", style: "height: 155px; object-fit: cover;" %>
+              <%= image_tag flat.photos.first, class: "card-img-top img-fluid rounded-top", style: "height: 155px; object-fit: cover;" %>
             <% else %>
               <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Placeholder Image">
             <% end %>
