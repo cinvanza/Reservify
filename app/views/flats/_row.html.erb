@@ -1,0 +1,14 @@
+<% @bookings.each do |booking| %>
+  <tr>
+    <td scope="col"> Booking ID <%=  %></th>
+    <td scope="col"> Check-In <%=  %></th>
+    <td scope="col"> Check-Out <%=  %></th>
+    <td scope="col"> Guest <%=  %></th>
+  </tr>
+  <tr>
+    <td><%= booking.id %></td>
+    <td><%= booking.check_in %></td>
+    <td><%= booking.check_out %></td>
+    <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
+  </tr>
+<% end %>
