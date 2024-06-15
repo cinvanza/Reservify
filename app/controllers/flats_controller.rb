@@ -64,7 +64,7 @@ class FlatsController < ApplicationController
   def flat_params
     params.require(:flat).permit(:address, :price, :capacity, :user_id, :reserved, :title, :description, :image_url, :available_start, :available_end, photos: [])
   end
-end
+
 
 def available_dates(check_in, check_out)
   check_in_date = Date.parse(check_in)

@@ -1,5 +1,5 @@
 
-<div class="container w-80 shadow border p-4 mt-2">
+<div class="container w-80 shadow border p-4 mt-2 mb-5">
       <div class="container"> <!--CONTENEDOR DE LAS FOTOGRAFIAS-->
         <h1 class="my-3" style="font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;"><i class="fa-solid fa-house" style="color: rgb(243, 35, 156)"></i> <%= @flat.title %></h1>
           <div class="row d-flex justify-content-center">
@@ -26,9 +26,9 @@
           <p><%= @flat.description %></p>
           <hr>
           <p class="mb-1"><strong>Stay with </strong></p>
-          <p><%= @flat.user %></p>
-            <%= link_to "Book Now", new_flat_booking_path(@flat), class:'btn btn-primary btn-lg mt-4'%>
-            <%= link_to 'Back', flats_path, class:'btn btn-outline-primary btn-lg mt-4'%>
+          <p><%= @flat.user.email.split('@').first %></p>
+            <%= link_to "Book Now", new_flat_booking_path(@flat), class:'btn pink-btn btn-lg mt-4'%>
+            <%= link_to 'Back', root_path, class:'btn pink-btn btn-lg mt-4'%>
         </div>
         <div class="col ms-3">
         <h4>$ <%= @flat.price %></h4>
@@ -39,8 +39,8 @@
                   <col span="1" style="width: 50%">
                 </colgroup>
                 <tr>
-                  <th scope="col" style="color: #FF0000">CHECK-IN</th>
-                  <th scope="col" style="color: #FF0000">CHECK-OUT</th>
+                  <th scope="col" style="color: #f234b1">CHECK-IN</th>
+                  <th scope="col" style="color: #f234b1">CHECK-OUT</th>
                 </tr>
                 <tr>
                   <td style="color: #818589"><%= @flat.available_start %></td>
