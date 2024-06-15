@@ -127,7 +127,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: wheat;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
@@ -161,4 +161,8 @@ h1.title {
 .btn-secondary:hover {
   background-color: #5a6268;
   border-color: #545b62;
+}
+
+.wheat-color {
+  color: wheat;
 }
