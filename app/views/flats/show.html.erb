@@ -26,7 +26,7 @@
           <p><%= @flat.description %></p>
           <hr>
           <p class="mb-1"><strong>Stay with </strong></p>
-          <p><%= @flat.user %></p>
+          <p><%= @flat.user.first_name %></p>
             <%= link_to "Book Now", new_flat_booking_path(@flat), class:'btn btn-primary btn-lg mt-4'%>
             <%= link_to 'Back', flats_path, class:'btn btn-outline-primary btn-lg mt-4'%>
         </div>

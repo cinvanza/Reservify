@@ -1,26 +1,44 @@
-<h1>Bookings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Check In</th>
-      <th>Check Out</th>
-      <th>User</th>
-      <th>Flat</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookings.each do |booking| %>
+<div class="container"> <!--Contenedor de todo el contenido-->
+  <div class="d-flex justify-content-between"> <!--Contenedor del titulo con sus botones-->
+    <h1 class="mt-3">My Bookings</h1>
+  </div>
+  <div class="container mt-3">
+    <table class="table">
+    <thead>
       <tr>
-        <td><%= booking.id %></td>
-        <td><%= booking.check_in %></td>
-        <td><%= booking.check_out %></td>
-        <td><%= booking.user.first_name %> <%= booking.user.last_name %></td>
-        <td><%= booking.flat.address %></td>
-        <td><%= booking.status %></td>
+        <th scope="col">#</th>
+        <th scope="col"><i class="fa-solid fa-house"></i> Booking ID</th>
+        <th scope="col"><i class="fa-solid fa-location-dot"></i> Check-In</th>
+        <th scope="col"><i class="fa-solid fa-location-dot"></i>Check-Out</th>
+        <th scope="col"><i class="fa-solid fa-address-book"></i> Flat Address</th>
+        <th scope="col">Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+    <% cont = 1 %>
+    <% if current_user.bookings.present? %>
+      <% @bookings.each do |booking| %>
+        <% if booking.user == current_user %>
+          <tr>
+            <th scope="row" style="color: #818589"><div class="text-center"> <%= cont %><div></th>
+            <td style="color: #818589"><%= booking.id %></td>
+            <td style="color: #818589"><%= booking.check_in %></td>
+            <td style="color: #818589">$ <%= booking.check_out %></td>
+            <td style="color: #818589"><%= booking.flat.address %></td>
+            <td><%= link_to booking_path(booking) do %><i class="fa-solid fa-eye" style="margin: 5px"></i><% end %><%= link_to booking_path(booking), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } do %><i class="fa-solid fa-trash" style="margin: 5px"></i><% end %></td>
+            <% cont += 1 %>
+          </tr>
+        <% end %>
+      <% end %>
+      <% else %>
+        <tr>
+          <td colspan="7" style="text-align: center">No Bookings created<td>
+        </tr>
+      <% end %>
+      </tbody>
+      </table>
+  </div>
+<div class="d-grid gap-2 d-md-block">
+  <%= link_to 'Back Home', root_path, class:'btn btn-outline-primary m-3'%>
+</div>
+</div>
