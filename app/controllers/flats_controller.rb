@@ -39,6 +39,7 @@ class FlatsController < ApplicationController
   end
 
   def search
+
     @flats = Flat.all
     if params[:destination].present?
       @flats = @flats.where(address: params[:destination])
@@ -51,16 +52,19 @@ class FlatsController < ApplicationController
       @available = available_days(@flats.where(available_start: params[:date_in]), @flats.where(available_end: params[:date_out]))
     else
       @available = []
-      flash[:alert] = "Please enter both check-in and check-out dates."
+
     end
 
   end
+
+  end
+
   private
 
   def flat_params
     params.require(:flat).permit(:address, :price, :capacity, :user_id, :reserved, :title, :description, :image_url, :available_start, :available_end, photos: [])
   end
-end
+
 
 def available_dates(check_in, check_out)
   check_in_date = Date.parse(check_in)
