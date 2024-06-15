@@ -2,25 +2,22 @@
 <div class="container w75">
   <%= render 'shared/search_bar' %>
 </div>
-<div class="container-flex">
-    <%= link_to 'Add Flat', new_flat_path, class: 'btn btn-primary' %>
-</div>
 
 <div class="container">
     <div class="row">
       <% if @flats.any? %>
         <% @flats.each do |flat| %>
-          <div class="col-12 col-sm-6 col-md-4 mb-4">
-            <div class="card mb-4 shadow-sm h-100">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card mb-4 shadow-sm h-100" style="min-height: 400px;">
               <% if flat.photos.present? %>
-                <%= image_tag flat.photos.first, class: "card-img-top" %>
+                <%= image_tag flat.photos.first, class: "card-img-top img-fluid" %>
               <% else %>
                 <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Placeholder Image">
               <% end %>
-              <div class="card-body">
-                <h5 class="card-title"><%= flat.title %></h5>
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold"><%= flat.title %></h5>
                 <p class="card-text"><%= flat.description %></p>
-                <p class="card-text text-muted">Price: <%= number_to_currency(flat.price) %></p>
+                <p class="card-text text-muted mt-auto">Price: <%= number_to_currency(flat.price) %></p>
                 <%= link_to 'View Flat', flat_path(flat), class: 'btn btn-secondary' %>
               </div>
             </div>
